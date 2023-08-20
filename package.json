@@ -1,0 +1,40 @@
+{
+  "name": "@sotaproject/media",
+  "version": "1.1.0",
+  "keywords": [
+    "codex editor",
+    "tool",
+    "image",
+    "media",
+    "editor.js",
+    "editorjs"
+  ],
+  "author": {
+    "name": "CodeX",
+    "email": "team@ifmo.su"
+  },
+  "description": "Media Tool for Editor.js",
+  "license": "MIT",
+  "repository": "https://github.com/SotaProject/media",
+  "main": "dist/mediablock.umd.js",
+  "module": "dist/mediablock.mjs",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "@codexteam/icons": "^0.1.0",
+    "@editorjs/editorjs": "^2.26.4",
+    "@types/node": "^16.3.3",
+    "formidable": "^2.1.1",
+    "request": "^2.88.2",
+    "ts-loader": "^9.1.0",
+    "typescript": "^4.2.4",
+    "vite": "^3.1.0",
+    "vite-plugin-css-injected-by-js": "^2.1.1"
+  },
+  "dependencies": {
+    "@codexteam/ajax": "^4.2.0",
+    "sass": "^1.62.1"
+  }
+}
