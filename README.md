@@ -2,12 +2,12 @@
 
 ## Installation
 
-Use your package manager to install the package `editorjs-mediablock`.
+Use your package manager to install the package `@sotaproject/media`.
 
 ```
-npm install editorjs-mediablock
+npm install @sotaproject/media
 
-yarn add editorjs-mediablock
+yarn add @sotaproject/media
 ```
 
 ## Development
