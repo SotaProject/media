@@ -239,7 +239,23 @@ export default class MediaTool {
    * @returns {MediaToolData}
    */
   save() {
-    const caption = this.ui.nodes.caption;
+    /**
+     * Browsers may wrap caption lines in <div>/<p> tags (e.g. on paste or drag-n-drop).
+     * The sanitizer would strip those tags and glue the lines together,
+     * so convert block-level line wrappers to <br> before saving.
+     */
+    const caption = this.ui.nodes.caption.cloneNode(true);
+
+    caption.querySelectorAll('div, p').forEach((el) => {
+      // a lone <br> inside a wrapper is just an empty-line placeholder — drop it to avoid doubling
+      if (el.childNodes.length === 1 && el.firstChild.nodeName === 'BR') {
+        el.firstChild.remove();
+      }
+      if (el.previousSibling) {
+        el.before(document.createElement('br'));
+      }
+      el.replaceWith(...el.childNodes);
+    });
 
     this._data.caption = caption.innerHTML;
 

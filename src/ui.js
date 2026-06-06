@@ -42,6 +42,30 @@ export default class Ui {
      *  </wrapper>
      */
     this.nodes.caption.dataset.placeholder = this.config.captionPlaceholder;
+
+    /**
+     * Paste into the caption as plain text, keeping line breaks as <br>.
+     * Otherwise the browser wraps pasted lines in <div>/<p> tags,
+     * which are stripped by the sanitizer on save, gluing the lines together.
+     */
+    if (!this.readOnly) {
+      this.nodes.caption.addEventListener('paste', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const text = (event.clipboardData || window.clipboardData).getData('text/plain');
+        const html = text
+          .split(/\r?\n/)
+          .map((line) => line
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;'))
+          .join('<br>');
+
+        document.execCommand('insertHTML', false, html);
+      });
+    }
+
     this.nodes.mediaContainer.appendChild(this.nodes.mediaPreloader);
     this.nodes.wrapper.appendChild(this.nodes.mediaContainer);
     this.nodes.wrapper.appendChild(this.nodes.caption);
