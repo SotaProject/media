@@ -20,7 +20,8 @@
   "module": "dist/mediablock.mjs",
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "prepare": "vite build"
   },
   "devDependencies": {
     "@codexteam/icons": "^0.1.0",
